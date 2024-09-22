@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="./ex1.css">
+</head>
+<body>
+    <header><h1>Digite seus dados</h1></header>
+
+    <div>
+        <form>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" required>
+            <br><br>
+            <label for="sobrenome">Sobrenome:</label>
+            <input type="text" id="sobrenome" required>
+            <br><br>
+            <button onclick="botaoUm()">Não clique</button>
+            <button onclick="botaoDois()">Você vai clicar?</button>
+            <button onclick="botaoTres()">Por favor, não clique!</button>
+            <button onclick="botaoQuatro()">Tu é teimoso(a)</button>
+
+            <p id="result"></p>
+        </form>
+    </div>
+
+
+    <script>
+            function botaoUm(){
+                let nome = document.getElementById('nome').value;
+                let sobrenome = document.getElementById('sobrenome').value
+                document.body.style.backgroundColor = "green";
+                alert(`Olá, ${nome} ${sobrenome}, pedi para não clicar, só por sua teimosia, irei te chamar somente de ${sobrenome}!`);
+                console.log(`${sobrenome} você é CHATO. Adeus ${nome}`);
+
+
+            }
+
+            function botaoDois(){
+                let nome = document.getElementById('nome').value;
+                let sobrenome = document.getElementById('sobrenome').value;
+                const cores = ["red","blue","yellow"];
+                let atualColor = 0;
+
+                document.getElementById('nome').value = sobrenome;
+                document.getElementById('sobrenome').value = nome;
+
+                setInterval(function(){
+                    let novoN = document.getElementById('nome').value;
+                    let novoS = document.getElementById('sobrenome').value;
+
+                    document.getElementById('nome').value = novoS;
+                    document.getElementById('sobrenome').value = novoN;
+
+                    document.body.style.background = cores[atualColor];
+                    atualColor = (atualColor + 1) % cores.length;
+
+                }, 2000);
+            }
+
+            function botaoTres(){
+                let nome = document.getElementById("nome").value;
+                let sobrenome = document.getElementById("sobrenome").value;
+                alert(`Você é insistente, não? Mas descobri algo legal, o seu nome contém ${nome.length} letras e seu sobrenome contém ${sobrenome.length} letras!`);
+            }
+
+            function botaoQuatro(){
+                let nome = document.getElementById('nome').value;
+                let sobrenome = document.getElementById('sobrenome').value;
+                console.log(`Por consequência de sua teimosia, você só saberá o que esse botão faz aqui, no console. HAHAHAHA, sendo assim, seu nome completo em caps lock fica ${nome.toLocaleUpperCase()} ${sobrenome.toLocaleUpperCase()}`);
+                document.getElementById("result").textContent = "HAHAHAHAHAHAHA";
+            }
+
+        </script>
+        
+</body>
+</html>
